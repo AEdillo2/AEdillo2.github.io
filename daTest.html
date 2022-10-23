@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel = "stylesheet" href = "daTest.css">
+    </head>
+
+    <body>
+        <h1>
+            Question 6: The Quote Button
+        </h1>
+
+        <div class="button-center">
+            <button class="button" id="btnClick" onclick="quoteFunction();">Click For A Quote!</button>
+        </div>
+
+        <p id="daQuote"></p>
+        <p id="daAuthor"></p>
+
+        <script>
+            const quotes = {
+                Symmetra: "Reality bends to my will",
+                Zenyatta: "Pass into the Iris",
+                Lucio: "Oh let's break it down!",
+                Mercy: "Heroes never die!",
+                Mei: "Freeze! Don't move!",
+                Zarya: "Fire at will!",
+                Reinhardt: "Hammer down!",
+                Torbjorn: "Molten Core!",
+                Widowmaker: "No one can hide from my sight!",
+                Tracer: "Time's up!",
+                Genji: "Ryuugekiken!",
+                Hanzo: "Ryuu-ga, Wa-ga-te-ki-wo, Ku-ra-u",
+                Roadhog: "Eat This",
+                Winston: "*very angry gorilla on the premises* (He does not have a funny ultimate sound)",
+                Mccree: "It's High Noon",
+                Soldier76: "I've got you in my sights!",
+                Reaper: "DIE! DIE! DIE!",
+                Pharah: "Justice Rains From Above!",
+                Junkrat: "Fire in the hole!",
+                Bastion: "Du do do doooo do DUUUU",
+                Dva: "Nerf this!"
+            }
+
+
+            function randomInt(max) {
+                return Math.floor(Math.random() * max)
+            }
+
+            function quoteFunction() {
+                var writtenQuote = document.getElementById("daQuote").textContent
+                var writtenAuthor = document.getElementById("daAuthor").textContent
+                var collectedQuotes = []
+                var collectedAuthors = []
+                for (const key in quotes) {
+                    if (!writtenQuote.includes(quotes[key]) && !writtenAuthor.includes(key))
+                    {
+                        collectedAuthors.push(key)
+                        collectedQuotes.push(quotes[key])
+                    }
+                    else
+                    {
+                        console.log('quote: ', writtenQuote)
+                        console.log('author:', writtenAuthor)
+                    }
+                }
+                    
+                var daIndex = randomInt(collectedQuotes.length)
+                document.getElementById("daQuote").innerHTML = "\"" + collectedQuotes[daIndex] + "\""
+                document.getElementById("daAuthor").innerHTML = "~ " + collectedAuthors[daIndex]
+            }
+        </script>
+    </body>
+</html>
